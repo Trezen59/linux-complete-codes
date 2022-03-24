@@ -1,0 +1,95 @@
+dynaminc files have an extention .so also called as shared object.
+
+dym lib uses a flag called as "pic" POSITION INDEPENDENT CODE.
+
+dym lib should be relocatable. i.e the instructions of dym lib should ready to get load into any men addr space.
+
+for ex. a exe file needs a process 1 needs a add of dym lib and dym lib should merge with the program in such a way that dym lib appears to be a part of exe file, later when a another exe file requires the dym lib the instructions of the lib should merge with the mem of the exe program.
+
+"-shared" is a flag that is used to generate a dym lib.
+
+a linux cmd line tool called as "ldd" will provede the dependencied required by the exe files.
+
+it all depends upon the processor how it is looking itup on the mem, based ont hat ods will form policies to manage mem.
+
+processor can look on to mem in 2 diff ways 1) real and 2) protected.
+
+once the sys is powered on during exe of bios code and boot loader code executuion processor is in real mode, looking mem as an array of bytes.
+
+once the kernel bootup starts, processor shifted to protected mode and looking mem as set of blocks (linked list of pages) and ths process is called as processor initialization.
+
+kernel operating sys creating some illution and making cpu to look mem as set of blocks.
+
+
+
+
+********* GDB Debugger tool ***************
+
+
+GDB is an open source software, is a cmd line tool that works with exe files.
+GDB is an powerful debugging tool that supports many languages line c, cpp, pascal, fortran, python.
+GDB also supports cmd line args.
+
+
+1)  list - first 10 lines of code.
+2)  list main - prints main 
+3)  break - to stop the program exe at our line of choice.
+	 break main
+	 b 10
+4)  run - to run
+5)  next - executuion of next line of code, executes only function call.
+6)  step - gets into function code and executes the called function.
+7)  finish - finish execution of program.
+8)  print - print the var values.
+9)  info locals - all variable info
+10) 
+
+
+
+
+******* Segmentation faults **********
+
+
+
+if we observe real time debugging examples, mst of the times bugs happens to be from users poimt of view for ex. accidentally dereferencig a NULL pointer, dereferencig an uninitialized ptr, dereferencig aptr which is already freed up, accessing a mem beyond the lower boundary regions and beyond upper boundary regions.
+
+when a process created process addr space is allocated. program is expected to use only the allocated region, whenever the program makes a mem violation the segmentation fault occurs.
+
+cpu will get the logical addr and will map the logical addr wrt physical addr with the help of kernel page frame relation table.
+
+incase the addr is itself invalid mem addr and cpu is giving the same to page frame relation table and kernel fails to map frame number for invalid addr.
+
+processorthrow page fault error to the kernel, now kernel will check for process segmented area nad then send a sig called SEGSEGV to the respective process.
+
+on reception of the signal the process will abort the operation with segmentation fault.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
